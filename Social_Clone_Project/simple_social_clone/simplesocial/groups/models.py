@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.text import slugify
 # from accounts.models import User
@@ -21,7 +21,7 @@ class Group(models.Model):
     slug = models.SlugField(allow_unicode=True, unique=True)
     description = models.TextField(blank=True, default='')
     description_html = models.TextField(editable=False, default='', blank=True)
-    members = models.ManyToManyField(User,through="GroupMember")
+    members = models.ManyToManyField(User, through="GroupMember")
 
     def __str__(self):
         return self.name
@@ -32,19 +32,23 @@ class Group(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("groups:single", kwargs={"slug": self.slug})
+        return reverse('groups:single', kwargs={'slug': self.slug})
 
 
     class Meta:
-        ordering = ["name"]
+        ordering = ['name']
+
+
 
 
 class GroupMember(models.Model):
-    group = models.ForeignKey(Group, related_name="memberships")
-    user = models.ForeignKey(User,related_name='user_groups')
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="memberships")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_groups')
 
     def __str__(self):
         return self.user.username
 
     class Meta:
         unique_together = ("group", "user")
+
+    objects = models.Manager

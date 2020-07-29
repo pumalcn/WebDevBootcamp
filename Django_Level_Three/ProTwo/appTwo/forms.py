@@ -1,7 +1,7 @@
 from django import forms
-from appTwo.models import User
+from .models import User
 
 class NewUserForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = User
         fields = '__all__'

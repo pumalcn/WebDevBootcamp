@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from Django_Level_Two.first_project.first_app.models import Topic,Webpage,AccessRecord
+from . models import Topic,Webpage,AccessRecord
 # Create your views here.
 
 # Our original index view function
@@ -14,5 +14,5 @@ from Django_Level_Two.first_project.first_app.models import Topic,Webpage,Access
 
 def index(request):
     webpages_list = AccessRecord.objects.order_by('date')
-    date_dict = {"access_records":webpages_list}
-    return render(request,'first_app/index.html',date_dict)
+    date_dict = {"access_records": webpages_list}
+    return render(request, 'first_app/index.html', date_dict)

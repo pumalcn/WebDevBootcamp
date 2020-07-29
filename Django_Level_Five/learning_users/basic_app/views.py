@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from basic_app.forms import UserForm,UserProfileInfoForm
+from .forms import UserForm, UserProfileInfoForm
 
 
 

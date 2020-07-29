@@ -1,7 +1,7 @@
 from django.shortcuts import render
 # from django.http import HttpResponse
 # from appTwo.models import User
-from appTwo.forms import NewUserForm
+from .forms import NewUserForm
 # Create your views here.
 
 def index(request):

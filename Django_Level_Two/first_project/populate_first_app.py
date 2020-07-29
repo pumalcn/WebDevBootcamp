@@ -1,14 +1,14 @@
 import os
 # Configure settings for project
 # Need to run this before calling models from application!
-os.environ.setdefault('DJANGO_SETTINGS_MODULE','first_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'first_project.settings')
 
 import django
 # Import settings
 django.setup()
 
 import random
-from first_app.models import Topic,Webpage,AccessRecord
+from first_app.models import Topic, Webpage, AccessRecord
 from faker import Faker
 
 fakegen = Faker()
@@ -37,11 +37,11 @@ def populate(N=5):
         fake_name = fakegen.company()
 
         # Create new Webpage Entry
-        webpg = Webpage.objects.get_or_create(topic=top,url=fake_url,name=fake_name)[0]
+        webpg = Webpage.objects.get_or_create(topic=top, url=fake_url, name=fake_name)[0]
 
         # Create Fake Access Record for that page
         # Could add more of these if you wanted...
-        accRec = AccessRecord.objects.get_or_create(name=webpg,date=fake_date)[0]
+        accRec = AccessRecord.objects.get_or_create(name=webpg, date=fake_date)[0]
 
 
 if __name__ == '__main__':

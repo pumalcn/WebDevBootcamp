@@ -44,7 +44,7 @@ class PostUpdateView(LoginRequiredMixin,UpdateView):
 
 class DraftListView(LoginRequiredMixin,ListView):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_draft_list.html'
+    redirect_field_name = 'blog/post_list.html'
 
     model = Post
 

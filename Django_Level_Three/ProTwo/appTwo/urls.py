@@ -1,6 +1,6 @@
-from django.conf.urls import url
-from appTwo import views
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    url(r'^$',views.users,name='users'),
+    path('', views.users, name='users'),
 ]
